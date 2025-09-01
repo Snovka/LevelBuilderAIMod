@@ -1,0 +1,34 @@
+name: Build LevelBuilderAIMod
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    name: Build Android .so
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y cmake g++ ninja-build
+
+      - name: Create build directory
+        run: mkdir -p build
+
+      - name: Compile mod
+        run: |
+          cd build
+          cmake ..
+          cmake --build . --config Release
+
+      - name: Upload .so
+        uses: actions/upload-artifact@v3
+        with:
+          name: LevelBuilderAIMod-so
+          path: build/LevelBuilderAIMod.so
