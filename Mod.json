@@ -3,7 +3,7 @@
   "name": "Level Builder AI",
   "version": "1.0.0",
   "description": "AI-powered Geometry Dash mod that generates levels based on description, difficulty, and song.",
-  "author": "YourName",
+  "author": "Snovka999",
   "dependencies": {
     "geode": ">=2.0.0"
   }
